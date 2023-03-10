@@ -10,22 +10,19 @@ length (длина в метрах), width (ширина в метрах).
 Использовать формулу: длина * ширина * масса асфальта для покрытия одного кв
 метра дороги асфальтом, толщиной в 1 см * число м толщины полотна.
 Массу и толщину сделать публичными атрибутами.
-Проверить работу метода.
-
-Например: 20м*5000м*25кг*0.05м = 125000 кг = 125 т
 '''
 
 class Road:
 
-    def __init__(self, l, w, m, t):
-        self.length = l
-        self.width = w
-        self.mass = m
-        self.thickness = t
+    def __init__(self, length, width, mass, thickness):
+        self._l = length
+        self._w = width
+        self.m = mass
+        self.t = thickness
 
     def Mass(self):
-        mass = self.length * self.width * self.mass * self.thickness
-        print(f"{self.length}м * {self.width}м * {self.mass}кг/м2 * {self.thickness}м = {int(mass)} кг = {int(mass/1000)}т")
+        mass = self._l * self._w * self.m * self.t
+        print(f"{self._l}м * {self._w}м * {self.m}кг/м2 * {self.t}м = {int(mass)} кг = {int(mass/1000)}т")
 
 l = float(input('Введите длинну дороги (м)'))
 w = float(input('Введите ширину дороги (м)'))
