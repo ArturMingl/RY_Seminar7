@@ -13,3 +13,28 @@
 
 Проверить работу примера, создав экземпляр и вызвав описанный метод.
 '''
+
+import time
+
+
+class Traffic_lights:
+
+    def __init__(self, color=""):
+        __color = color
+
+    def running (self, r=7, y=2, g=5):
+        self.__color = 'Красный'
+        print(f"\033[0;31m{self.__color}")
+        time.sleep(r)
+        self.__color = 'Желтый'
+        print(f"\033[0;33m{self.__color}")
+        time.sleep(y)
+        self.__color = 'Зеленый'
+        print(f"\033[0;32m{self.__color}")
+        time.sleep(g)
+
+
+if __name__ == '__main__':
+    traffic = Traffic_lights()
+    traffic.running()
+
