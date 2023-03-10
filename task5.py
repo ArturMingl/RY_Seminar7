@@ -11,3 +11,31 @@
 только если введено число. Класс-исключение должен не позволить пользователю ввести текст (не число)
 и отобразить соответствующее сообщение. При этом работа скрипта не должна завершаться.
 '''
+
+class NotNumberError(Exception):
+    def __init__(self, text):
+        self.text = text
+
+    def __str__(self):
+        return self.text
+
+
+if __name__ == '__main__':
+    my_list = []
+
+    while True:
+        user_input = input("Введите число для заполнения списка, или 'stop' для выхода: ")
+
+        if user_input == "stop":
+            break
+
+        try:
+            if not user_input.isdigit():
+                raise NotNumberError(f"'{user_input}' не числовой формат")
+
+            my_list.append(int(user_input))
+        except NotNumberError as e:
+            print(e)
+
+    print(my_list)
+
