@@ -13,3 +13,31 @@
 П.С. попытайтесь добить вывода информации о сотруднике также через перегрузку str
 str(self) - вызывается функциями str, print и format. Возвращает строковое представление объекта.
 '''
+
+class Worker:
+
+    def __init__(self, n='Ivan', s='Vasilev', p='designer', w=100, b=50):
+        self.name = n
+        self.surname = s
+        self.position = p
+        self.wage = w
+        self.bonus = b
+        self._income = {"wage": self.wage, "bonus": self.bonus}
+
+class Position(Worker):
+    def get_full_name (self):
+        return self.name + ' ' + self.surname
+
+    def get_total_income (self):
+        return self._income['wage'] + self._income['bonus']
+
+    def __str__(self):
+        return f'{self.name} {self.surname} - {self._income["wage"] + self._income["bonus"]}'
+
+if __name__ == '__main__':
+    pos_inf = Position('Vasya', 'Ivanov', 'designer', 350, 50)
+    print(pos_inf.get_full_name())
+    print(pos_inf.get_total_income())
+    print(pos_inf)
+
+
